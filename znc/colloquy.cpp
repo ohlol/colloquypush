@@ -615,13 +615,13 @@ public:
 
 			//Save stored stuff
 			//ClearNV(); //Dangerous, NV holds devices
-			SetNV("u:idle", CString(m_idleAfterMinutes), false);
-			SetNV("u:awayonlypush", CString(m_bAwayOnlyPush), false);
-			SetNV("u:attachedpush", CString(m_bAttachedPush), false);
-			SetNV("u:ignorenetworkservices", CString(m_bIgnoreNetworkServices), false);
-			SetNV("u:debug", CString(m_debug), false);
-			SetNV("u:nighthoursstart", CString(m_nightHoursStart), false);
-			SetNV("u:nighthoursend", CString(m_nightHoursEnd), false);
+			SetNV("u:idle", CString(m_idleAfterMinutes), true);
+			SetNV("u:awayonlypush", CString(m_bAwayOnlyPush), true);
+			SetNV("u:attachedpush", CString(m_bAttachedPush), true);
+			SetNV("u:ignorenetworkservices", CString(m_bIgnoreNetworkServices), true);
+			SetNV("u:debug", CString(m_debug), true);
+			SetNV("u:nighthoursstart", CString(m_nightHoursStart), true);
+			SetNV("u:nighthoursend", CString(m_nightHoursEnd), true);
 		} else if (sCommand.Token(0).Equals("STATUS")) {
 			CTable Table;
 			Table.AddColumn("Option");
