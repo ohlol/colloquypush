@@ -738,8 +738,10 @@ public:
 			time_t ww;
 			time(&ww);
 			struct tm* lt=localtime(&ww);
-			int minutes=lt->tm_hour*60+lt->tm_min;
-			if ((m_nightHoursStart && (minutes>=m_nightHoursStart)) || (m_nightHoursEnd && (minutes<m_nightHoursEnd))) {
+			int minutes=lt->tm_hour*60+lt->tm_min+m_pUser->GetTimezoneOffset()*60;
+			if ((m_nightHoursStart>m_nightHoursEnd) && ((minutes>m_nightHoursStart) || (minutes<m_nightHoursEnd))) {
+				bNightHours=true;
+			} else if ((m_nightHoursStart>=0 && (minutes>=m_nightHoursStart)) && (m_nightHoursEnd && (minutes<m_nightHoursEnd))) {
 				bNightHours=true;
 			}
 			//PutModule(CString(m_nightHoursStart) + ";"  + CString(m_nightHoursEnd) + "=" + CString(minutes));
